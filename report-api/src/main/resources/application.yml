@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: report-api
+  cloud:
+    stream:
+      bindings:
+        output:
+          destination: queue.email
+      kafka:
+        binder:
+          brokers: 127.0.0.1
+          defaultBrokerPort: 9092
+server:
+  port: ${PORT:0}
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}

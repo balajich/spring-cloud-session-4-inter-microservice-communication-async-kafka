@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+		 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- parent pom -->
+    <groupId>org.eduami.spring</groupId>
+    <artifactId>spring-cloud-session-4-inter-microservice-communication-async-kafka</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <!-- sub modules -->
+    <modules>
+        <module>registry</module>
+        <module>employee-api</module>
+        <module>payroll-api</module>
+		<module>mail-client</module>
+		<module>report-api</module>
+        <module>gateway</module>
+    </modules>
+
+</project>
