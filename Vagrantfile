@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
     kafkaserver.vm.network "forwarded_port", guest: 9092, host: 9092
     kafkaserver.vm.provision "shell", path: "startup-kafkaserver.sh"
     kafkaserver.vm.provider "virtualbox" do |vb|
-      vb.name = "kafkaserver "
+      vb.name = "kafkaserver"
       vb.memory = 10024
       vb.cpus = 4
     end
