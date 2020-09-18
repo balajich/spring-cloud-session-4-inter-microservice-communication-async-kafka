@@ -1,0 +1,30 @@
+{
+	"info": {
+		"_postman_id": "b8f3f55e-5455-40bd-bbac-39449b1e1790",
+		"name": "spring-cloud-session-4-inter-microservice-communication-async-kafka",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1-Get employee report using report-api-via-gateway",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/report-api/100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"report-api",
+						"100"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
