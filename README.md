@@ -160,5 +160,5 @@ spring:
 using Spring Cloud, Istio, and Kubernetes -Magnus Larsson
 - https://medium.com/@ruwansriw/apache-kafka-terminology-f0b5350c26e4 
 # Next Tutorial
-We will learn how to use kafka as message bus
-- https://github.com/balajich/spring-cloud-session-4-inter-microservice-communication-async-kafka
+Document microservices using OpenAPI/Swagger
+- https://github.com/balajich/spring-cloud-session-5-microservices-documentation
