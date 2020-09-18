@@ -74,8 +74,9 @@ I will be using vagrant to stop or start a virtual machine.
     - ``` mvn clean install ```
 # Kafka Server Admin UI (Control Center web interface)
 - http://localhost:9021/clusters
+
 ![KafkaUI](KafkaAdminUI.png "Kafka Server Admin UI")
-http://localhost:9021/clusters
+
 # Running components
 - Registry: ``` java -jar .\registry\target\registry-0.0.1-SNAPSHOT.jar ```
 - Employee API: ``` java -jar .\employee-api\target\employee-api-0.0.1-SNAPSHOT.jar ```
