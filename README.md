@@ -95,7 +95,7 @@ at spring-cloud-session-3-inter-microservice-communication-sync.postman_collecti
 In this section will focus only on report-api code which publishes employee details to queue **queue.email** 
 
 *ReportController* in app **report-api**.  @SendTo(Processor.OUTPUT) makes the function to invoke Kafka and writes
-details to MQ.
+details to topic **queue.email**.
 ```java
     @SendTo(Processor.OUTPUT)
     public Employee getEmployeeDetails(@PathVariable int employeeId) {
@@ -109,22 +109,14 @@ details to MQ.
 **application.yml** in report-api. 
 ```yaml
  cloud:
-    stream:
-      bindings:
-        output:
-          destination: queue.email
-          binder: local_rabbit
-      binders:
-        local_rabbit:
-          type: rabbit
-          environment:
-            spring:
-              Kafka:
-                host: localhost
-                port: 5672
-                username: guest
-                password: guest
-                virtual-host: /
+     stream:
+       bindings:
+         output:
+           destination: queue.email
+       kafka:
+         binder:
+           brokers: 127.0.0.1
+           defaultBrokerPort: 9092
 ```
 mail-client code that reads messages from queue. @StreamListener(Processor.INPUT) reads data from queue **email.queue**
 ```java
@@ -146,26 +138,19 @@ public class MailClientApplication {
 ```
 **application.yml** of mail-client
 ```yaml
-application:
+spring:
+  application:
     name: email-api
   cloud:
     stream:
       bindings:
         input:
           destination: queue.email
-          binder: local_rabbit
           group: emailconsumers
-      binders:
-        local_rabbit:
-          type: rabbit
-          environment:
-            spring:
-              Kafka:
-                host: localhost
-                port: 5672
-                username: guest
-                password: guest
-                virtual-host: /
+      kafka:
+        binder:
+          brokers: 127.0.0.1
+          defaultBrokerPort: 9092
 ```
 # References
 - https://www.baeldung.com/spring-cloud-stream
