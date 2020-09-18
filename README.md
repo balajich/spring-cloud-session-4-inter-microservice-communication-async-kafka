@@ -52,8 +52,8 @@ Spring cloud stream abstracts underneath communication  with Messagebus. This he
 # Source Code 
 ``` git clone https://github.com/balajich/spring-cloud-session-4-inter-microservice-communication-async-kafka.git``` 
 # Video
-[![Spring Cloud Session 4 Inter Microservice Communication ASynchronous using Kafka](https://img.youtube.com/vi/8CV8PDX8Kuc/0.jpg)](https://www.youtube.com/watch?v=8CV8PDX8Kuc)
-- https://youtu.be/8CV8PDX8Kuc
+[![Spring Cloud Session 4 Inter Microservice Communication ASynchronous using Kafka](https://img.youtube.com/vi/sP2WcMutbn0/0.jpg)](https://www.youtube.com/watch?v=sP2WcMutbn0)
+- https://youtu.be/sP2WcMutbn0
 # Architecture
 ![architecture](architecture.png "architecture")
 # Prerequisite
