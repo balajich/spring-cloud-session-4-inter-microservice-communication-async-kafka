@@ -1,7 +1,7 @@
-# Spring Cloud Session 4 Inter Microservice Communication ASynchronous using RabbitMQ
+# Spring Cloud Session 4 Inter Microservice Communication ASynchronous using Kafka
 In  this tutorial we are going to learn how microservices communicate with each other in asynchronous fashion. In asynchronous 
 communication calling microservice will **not wait** till the called microservice responds. This pattern can be achieved 
-with message bus infrastructures like Kafka or RabbitMQ.Here we use **Spring Cloud Stream** framework to communicate 
+with message bus infrastructures like Kafka.Here we use **Spring Cloud Stream** framework to communicate 
 with message bus.
 
 **Overview**
@@ -43,37 +43,39 @@ Spring Cloud Load balaner in gateway
 Note: We are not covering concepts like Partitions,Offsets,Consumer Groups ..etc. Please check my kafka tutorial blog.
 # Spring Cloud Stream Concepts
 Spring cloud stream abstracts underneath communication  with Messagebus. This helps to foucs on business logic instead of 
- nettigritty of message bus. We can easily switch from RabbitMQ to Kafka etc without code changes.
+ nettigritty of message bus. We can easily switch from Kafka to Kafka etc without code changes.
  - **Bindings** — a collection of interfaces that identify the input and output channels.
 - **Channel** — represents the communication pipe between messaging-middleware and the application.
 - **StreamListeners**- Listens to messages on Input channel and serializes them to java objects.
  
 
 # Source Code 
-``` git clone https://github.com/balajich/spring-cloud-session-4-inter-microservice-communication-async.git``` 
+``` git clone https://github.com/balajich/spring-cloud-session-4-inter-microservice-communication-async-kafka.git``` 
 # Video
-[![Spring Cloud Session 4 Inter Microservice Communication ASynchronous using RabbitMQ](https://img.youtube.com/vi/8CV8PDX8Kuc/0.jpg)](https://www.youtube.com/watch?v=8CV8PDX8Kuc)
+[![Spring Cloud Session 4 Inter Microservice Communication ASynchronous using Kafka](https://img.youtube.com/vi/8CV8PDX8Kuc/0.jpg)](https://www.youtube.com/watch?v=8CV8PDX8Kuc)
 - https://youtu.be/8CV8PDX8Kuc
 # Architecture
 ![architecture](architecture.png "architecture")
 # Prerequisite
 - JDK 1.8 or above
 - Apache Maven 3.6.3 or above
-- Vagrant, Virtualbox (To run RabbitMQ Server)
-# Start RabbitMQ Server and Build Microservices
-We will be running RabbitMQ server inside a docker container. I am running docker container on CentOS7 virtual machine. 
+- Vagrant, Virtualbox (To run Kafka Server)
+# Start Kafka Server and Build Microservices
+We will be running Kafka server inside a docker container. I am running docker container on CentOS7 virtual machine. 
 I will be using vagrant to stop or start a virtual machine.
-- RabbitMQ Server
-    - ``` cd spring-cloud-session-4-inter-microservice-communication-async ```
+- Kafka Server
+    - ``` cd spring-cloud-session-4-inter-microservice-communication-async-kafka ```
     - Bring virtual machine up ``` vagrant up ```
     - ssh to virtual machine ```vagrant ssh ```
     - Switch to root user ``` sudo su - ```
     - Change folder where docker-compose files is available ```cd /vagrant```
-    - Start RabbitMQ Server using docker-compose ``` docker-compose up -d ```
+    - Start Kafka Server using docker-compose ``` docker-compose up -d ```
 - Java
     - ``` mvn clean install ```
-# RabbitMQ Server UI
-![RabbitMQUI](RabbitMQUI.png "RabbitMQUI")
+# Kafka Server Admin UI (Control Center web interface)
+- http://localhost:9021/clusters
+![KafkaUI](KafkaAdminUI.png "Kafka Server Admin UI")
+http://localhost:9021/clusters
 # Running components
 - Registry: ``` java -jar .\registry\target\registry-0.0.1-SNAPSHOT.jar ```
 - Employee API: ``` java -jar .\employee-api\target\employee-api-0.0.1-SNAPSHOT.jar ```
@@ -85,15 +87,14 @@ I will be using vagrant to stop or start a virtual machine.
 # Using curl to test environment
 **Note I am running CURL on windows, if you have any issue. Please use postman client, its collection is available 
 at spring-cloud-session-3-inter-microservice-communication-sync.postman_collection.json**
-- Access RabbitMQ UI: ```http://localhost:15672/  ```
-- RabbitMQ defaults username/password: ``` guest/guest ```
+- Access Kafka UI: ```http://localhost:9021/clusters  ```
 - Get employee report using report api ( direct): ``` curl -s -L  http://localhost:8080/report-api/100 ```
 
   
 # Code
 In this section will focus only on report-api code which publishes employee details to queue **queue.email** 
 
-*ReportController* in app **report-api**.  @SendTo(Processor.OUTPUT) makes the function to invoke RabbitMQ and writes
+*ReportController* in app **report-api**.  @SendTo(Processor.OUTPUT) makes the function to invoke Kafka and writes
 details to MQ.
 ```java
     @SendTo(Processor.OUTPUT)
@@ -118,7 +119,7 @@ details to MQ.
           type: rabbit
           environment:
             spring:
-              rabbitmq:
+              Kafka:
                 host: localhost
                 port: 5672
                 username: guest
@@ -159,7 +160,7 @@ application:
           type: rabbit
           environment:
             spring:
-              rabbitmq:
+              Kafka:
                 host: localhost
                 port: 5672
                 username: guest
