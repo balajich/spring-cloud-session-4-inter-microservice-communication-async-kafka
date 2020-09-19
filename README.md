@@ -34,6 +34,13 @@ Important Notes
 server and register their availability with server.
 - Generally Netflix Ribbon Component is used as Client Side load balancer, but it is deprecated project. We will be using
 Spring Cloud Load balaner in gateway 
+# Source Code 
+``` git clone https://github.com/balajich/spring-cloud-session-4-inter-microservice-communication-async-kafka.git``` 
+# Video
+[![Spring Cloud Session 4 Inter Microservice Communication ASynchronous using Kafka](https://img.youtube.com/vi/sP2WcMutbn0/0.jpg)](https://www.youtube.com/watch?v=sP2WcMutbn0)
+- https://youtu.be/sP2WcMutbn0
+# Architecture
+![architecture](architecture.png "architecture")
 # Kafka Terminology
 - **Producer, publisher** A Producer is the application that is sending the messages Kafka server.
 - **Consumer** A Consumer is the application that receives the messages from the Kafka server.
@@ -47,15 +54,7 @@ Spring cloud stream abstracts underneath communication  with Messagebus. This he
  - **Bindings** — a collection of interfaces that identify the input and output channels.
 - **Channel** — represents the communication pipe between messaging-middleware and the application.
 - **StreamListeners**- Listens to messages on Input channel and serializes them to java objects.
- 
 
-# Source Code 
-``` git clone https://github.com/balajich/spring-cloud-session-4-inter-microservice-communication-async-kafka.git``` 
-# Video
-[![Spring Cloud Session 4 Inter Microservice Communication ASynchronous using Kafka](https://img.youtube.com/vi/sP2WcMutbn0/0.jpg)](https://www.youtube.com/watch?v=sP2WcMutbn0)
-- https://youtu.be/sP2WcMutbn0
-# Architecture
-![architecture](architecture.png "architecture")
 # Prerequisite
 - JDK 1.8 or above
 - Apache Maven 3.6.3 or above
