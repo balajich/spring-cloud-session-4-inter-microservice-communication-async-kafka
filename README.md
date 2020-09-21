@@ -158,6 +158,8 @@ spring:
 - Hands-On Microservices with Spring Boot and Spring Cloud: Build and deploy Java microservices 
 using Spring Cloud, Istio, and Kubernetes -Magnus Larsson
 - https://medium.com/@ruwansriw/apache-kafka-terminology-f0b5350c26e4 
+# FAQ
+- https://github.com/balajich/Spring-Cloud-Sessions-Microservices-FAQ/blob/master/README.md
 # Next Tutorial
 Document microservices using OpenAPI/Swagger
 - https://github.com/balajich/spring-cloud-session-5-microservices-documentation
